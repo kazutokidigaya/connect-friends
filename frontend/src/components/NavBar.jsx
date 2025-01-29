@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Notifications from "./Notifications";
-import { useState } from "react";
 
 const Navbar = () => {
   const { auth, logout } = useAuth();

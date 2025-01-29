@@ -7,25 +7,34 @@ const Login = () => {
   const [form, setForm] = useState({ username: "", password: "" });
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    // Call API to authenticate user
-    const response = await fetch(`${BASE_URL}/api/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+      const data = await response.json();
 
-    const data = await response.json();
-
-    if (response.ok) {
-      login(data.token, { username: data.username, interests: data.interests });
-      navigate("/dashboard");
-    } else {
-      alert(data.message); // Replace with toast notification
+      if (response.ok) {
+        login(data.token, {
+          username: data.username,
+          interests: data.interests,
+        });
+        navigate("/dashboard");
+      } else {
+        alert(data.message); // Replace with toast notification
+      }
+    } catch (error) {
+      toast.error("Error Signing Up");
+      console.error("error", error);
     }
+    setLoading(false);
   };
 
   return (

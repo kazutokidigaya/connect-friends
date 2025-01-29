@@ -54,7 +54,7 @@ const FriendList = () => {
     } catch (error) {
       toast.error("Failed to remove friend.");
     }
-    setLoading(true);
+    setLoading(false);
   };
 
   return (
