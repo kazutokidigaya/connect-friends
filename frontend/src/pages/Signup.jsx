@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../services/authService";
 
@@ -118,10 +118,16 @@ const Signup = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 rounded"
+            className="w-full bg-green-500 text-white py-2 rounded cursor-pointer"
           >
             Sign Up
           </button>
+          <p className="pt-4">
+            Already registered please{" "}
+            <span className="cursor-pointer text-blue-500">
+              <Link to="/login">Login.</Link>
+            </span>
+          </p>
         </form>
       )}
     </div>

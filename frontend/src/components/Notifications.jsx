@@ -61,9 +61,9 @@ const Notifications = () => {
   };
 
   const clearNotifications = async () => {
-    if (notifications.length === 0) return; // ✅ Prevent API call if already empty
+    if (notifications.length === 0) return;
 
-    setIsClearing(true); // ✅ Disable button during API call
+    setIsClearing(true);
 
     try {
       const response = await fetch(
@@ -77,7 +77,7 @@ const Notifications = () => {
       );
       const data = await response.json();
       if (response.ok) {
-        setNotifications([]); // ✅ Clear UI notifications
+        setNotifications([]);
         toast.success("Notifications cleared.");
       } else {
         toast.error(data.message);
@@ -85,14 +85,17 @@ const Notifications = () => {
     } catch (error) {
       toast.error("Failed to clear notifications.");
     } finally {
-      setIsClearing(false); // ✅ Re-enable button after request
+      setIsClearing(false);
       setOpen(false);
     }
   };
 
   return (
     <div className="relative">
-      <button onClick={() => setOpen(!open)} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="relative cursor-pointer"
+      >
         🔔
         {notifications.length > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2">
@@ -117,13 +120,13 @@ const Notifications = () => {
                     <div>
                       <p>{n.from.username} sent you a friend request.</p>
                       <button
-                        className="px-2 py-1 bg-green-500 text-white rounded mr-2"
+                        className="px-2 py-1 bg-green-500 text-white rounded mr-2 cursor-pointer"
                         onClick={() => respondToRequest(n.from._id, "accept")}
                       >
                         Accept
                       </button>
                       <button
-                        className="px-2 py-1 bg-red-500 text-white rounded"
+                        className="px-2 py-1 bg-red-500 text-white rounded cursor-pointer"
                         onClick={() => respondToRequest(n.from._id, "reject")}
                       >
                         Reject
@@ -142,12 +145,12 @@ const Notifications = () => {
           </ul>
           <button
             onClick={clearNotifications}
-            className={`w-full mt-2 bg-blue-500 text-white py-1 rounded ${
+            className={`w-full mt-2 bg-blue-500 text-white py-1 rounded cursor-pointer ${
               isClearing || notifications.length === 0
                 ? "opacity-50 cursor-not-allowed"
                 : ""
             }`}
-            disabled={isClearing || notifications.length === 0} // ✅ Button is disabled when empty or during API call
+            disabled={isClearing || notifications.length === 0}
           >
             {isClearing ? "Clearing..." : "Clear All"}
           </button>

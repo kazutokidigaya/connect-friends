@@ -76,7 +76,7 @@ const FriendList = () => {
               <span>{friend.username}</span>
               <button
                 onClick={() => unfriend(friend._id)}
-                className="px-2 py-1 bg-red-500 text-white rounded"
+                className="px-2 py-1 bg-red-500 text-white rounded cursor-pointer"
               >
                 Unfriend
               </button>

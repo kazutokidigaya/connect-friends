@@ -16,7 +16,7 @@ const Navbar = () => {
           <span className="font-medium">{auth.user?.username}</span>
           <button
             onClick={logout}
-            className="px-3 py-1 bg-red-500 text-white rounded"
+            className="px-3 py-1 bg-red-500 text-white rounded cursor-pointer"
           >
             Logout
           </button>
@@ -25,13 +25,13 @@ const Navbar = () => {
         <div className="space-x-4">
           <Link
             to="/login"
-            className="px-3 py-1 bg-blue-500 text-white rounded"
+            className="px-3 py-1 bg-blue-500 text-white rounded cursor-pointer"
           >
             Login
           </Link>
           <Link
             to="/signup"
-            className="px-3 py-1 bg-green-500 text-white rounded"
+            className="px-3 py-1 bg-green-500 text-white rounded cursor-pointer"
           >
             Signup
           </Link>

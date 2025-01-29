@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../services/authService";
 
 const Login = () => {
@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 ">
       {loading ? (
         <div className="w-full flex items-center justify-center p-10 align-middle h-screen">
           <div className="py-6 px-12 text-xl font-medium text-gray-900 bg-white rounded-lg border-2">
@@ -67,10 +67,16 @@ const Login = () => {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded"
+            className="w-full bg-blue-500 text-white py-2 rounded cursor-pointer"
           >
             Login
           </button>
+          <p className="pt-4">
+            Not a user please{" "}
+            <span className="cursor-pointer text-blue-500">
+              <Link to="/signup">SignUp.</Link>
+            </span>
+          </p>
         </form>
       )}
     </div>

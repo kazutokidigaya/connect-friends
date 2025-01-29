@@ -72,7 +72,7 @@ const FriendRecommendations = () => {
               <span>{rec.username}</span>
               <button
                 onClick={() => sendFriendRequest(rec._id)}
-                className="px-2 py-1 bg-blue-500 text-white rounded"
+                className="px-2 py-1 bg-blue-500 text-white rounded cursor-pointer"
               >
                 Add Friend
               </button>
